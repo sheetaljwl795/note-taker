@@ -31,7 +31,7 @@ const readAndAppend = (content, file) => {
   });
 };
 
-const deleteAndWrite = (idd , file) => {
+const deleteAndWrite = (noteId , file) => {
   fs.readFile(file, 'utf8', (err, data) => {
     if (err) {
       console.error(err);
@@ -40,7 +40,7 @@ const deleteAndWrite = (idd , file) => {
     const savedNotes = JSON.parse(data);
   
     for (let i = 0; i < savedNotes.length; i++) {
-      if (savedNotes[i].id === idd) {
+      if (savedNotes[i].id === noteId) {
       savedNotes.splice(i, 1);
       writeToFile(file, savedNotes);      
       }
