@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const api = require('./routes/index');
 
-const PORT = process.env.port || 3004;
+const PORT = process.env.PORT || 3004;
 
 const app = express();
 
@@ -10,8 +10,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/api', api);
-
-
 app.use(express.static('public'));
 
 // GET Route for homepage
@@ -23,7 +21,7 @@ app.get('/', (req, res) =>
 app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
-
+// Listen PORT
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT} 🚀`)
 );
